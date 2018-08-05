@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>팔레트 효과내기</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.wrapper{
+	width:700px;
+	background:yellow;
+	height:500px;
+	margin:auto;
+}
+.top{
+	height:100px;
+	background:pink;
+}
+.content{
+	height:400px;
+	background:#000;
+}
+.top > div{
+	width:100px;
+	height:100px;
+	float:left;
+}
+.top> div:nth-child(1){background:red;}
+.top> div:nth-child(2){background:orange;}
+.top> div:nth-child(3){background:yellow;}
+.top> div:nth-child(4){background:green;}
+.top> div:nth-child(5){background:blue;}
+.top> div:nth-child(6){background:navy;}
+.top> div:nth-child(7){background:purple;}
+
+
+</style>
+<script>
+//아래쪽 content 영역의 색상을 바꾸기!!
+//매개변수를 이용하면 장점? 
+//함수의 갯수를 현저히 줄일수 있다..
+function setColor(color){
+	var content=document.getElementById("content");
+	content.style.background=color;
+}
+</script>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="top">
+			<div onClick="setColor('red')"></div>
+			<div onClick="setColor('orange')"></div>
+			<div onClick="setColor('yellow')"></div>
+			<div onClick="setColor('green')"></div>
+			<div onClick="setColor('blue')"></div>
+			<div onClick="setColor('navy')"></div>
+			<div onClick="setColor('purple')"></div>
+		</div>
+		<div id="content" class="content"></div>
+	</div>
+</body>
+</html>

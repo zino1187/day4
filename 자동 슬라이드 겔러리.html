@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>자동 슬라이드 겔러리</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.wrapper{
+	width:600px;
+	margin:auto;
+}
+#top{
+	width:inherit;
+	font-size:30px;
+	padding:5px;
+}
+#content{
+	width:inherit;
+	background:yellow;
+}
+#content > img{
+	width:100%;
+}
+#footer{
+	text-align:center;
+}
+
+</style>
+<script>
+var bt_prev, bt_auto, bt_stop, bt_next;
+var pic;
+var x=0; //숫자값은 다른 숫자와 계산이 일어날 가능성이
+//있기 때문에 언제나 변수 선언시 그값을 초기화 하자 
+
+addEventListener("load", function(){
+	//alert("문서가  모두 로드되었어요!!");
+	bt_prev=document.getElementById("bt_prev");
+	bt_auto=document.getElementById("bt_auto");
+	bt_stop=document.getElementById("bt_stop");
+	bt_next=document.getElementById("bt_next");
+	pic=document.getElementById("pic");
+
+	//다음 버튼을 누르면....
+	bt_next.addEventListener("click", function(){
+		//alert("나 불렀어?");
+		next();
+	});
+});
+//다음 사진 나오는 함수 정의 
+//문서내의 pic 라는 이미지 요소의 src를 바꾸기!!
+function next(){
+	x++;  //x=x+1 과 동일한 식!!
+	pic.src=	"./images/p"+x+".jpg";
+}
+
+</script>
+</head>
+<body onLoad="init()">
+	<div class="wrapper">
+		<div id="top">./images/p1.jpg</div>
+		<div id="content">
+			<img src="./images/p1.jpg" id="pic">
+		</div>
+		<div id="footer">
+			<button id="bt_prev">이전</button>
+			<button id="bt_auto">자동</button>
+			<button id="bt_stop">중지</button>
+			<button id="bt_next">다음</button>
+		</div>
+	</div>
+
+</body>
+</html>
+

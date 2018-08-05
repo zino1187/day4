@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>구구단 출력</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+</style>
+<script>
+//1.어떤 대상이 몇번 수행하는가?
+//2.변하는게 무엇인지 파악하라 
+//절대 하지말아야 할것 : 인간이 계산하려고 하지마라!!
+
+//함수란?
+//1.장래에 자주 사용할 로직을 정의해놓은 단위!!
+//2.작성하기가 상당히 복잡한 로직을 포함하고 있거나 까다로운경우
+//  함수로 정의해놓고, 중복 작성을 피할때도 씀...
+
+//매개변수란? 함수의 호출자가 그 값을 결정하면, 함수내부에서 
+//사용하는 함수 선언 기법
+function dan(d){
+	for(var i=1;i<=9;i++){
+		document.write(d+"*"+i+"="+d*i+"<br>");
+	}
+}
+
+//두수의 합을 구하는 함수 
+function sum(x,y){
+	var s=x+y;
+	return s;//return 구문을 만나면 실행부는 더이상의 코드
+	//진행을 할수없고, 함수를 호출했던 라인으로 되돌아간다
+	//이때 return 뒤에 문자,숫자,논리값 데이터를 명시하면
+	//그 값을 가지고 간다!!
+}
+//alert(sum(10,20));
+function test(){
+	alert("하이");
+	return;
+	alert("안녕");
+}
+test();
+alert("이따보자");
+</script>
+</head>
+<body>
+
+</body>
+</html>
