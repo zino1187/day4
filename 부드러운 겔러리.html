@@ -16,6 +16,7 @@
 	width:inherit;/*부모의 크기와 동일하게..*/
 	height:300px;/*이미지 높이와 동일하게..*/
 	background:pink;
+	overflow:hidden; /*넘쳐나는 크기인 box를 숨긴다*/
 }
 #footer{
 	width:inherit;
@@ -32,28 +33,73 @@
 <script>
 var content;
 var footer;
+var box;
+var a=0.1; //값을 조정하면서 스스로 알아보기!! 정수1에 가까워질수록 투박함
+var targetX=0; //box가 도달할 목표지점
+
 //프로그램 가동과 동시에 초기화 작업 용도 정의...
 function init(){
 	content=document.getElementById("content");
 	footer=document.getElementById("footer");
 	createDot();
+	createImgBox();
 }
 //이미지를 선택하게 해주는 도트들..
 function createDot(){
 	for(var i=1;i<=7;i++){
 		var span=document.createElement("span");
 		span.innerText="●";
+		span.id=(i-1); // 순서대로 0,1,2,3,4,5,6
 		footer.appendChild(span);//자식 요소로 부착!!!
 
 		span.addEventListener("click", function(){
 			//현재 클릭한 span의 배경색을 바꿔보자!!
 			//this.style.color="green";
+			//alert("저의 아이디는 "+this.id+" 이고,원하는 이미지 위치는"+(this.id*400));
+			//box의 좌표값을 방금 구한 데이터를 이용하여 이동시킨다~~!
+			//box.style.left=-(this.id*400)+"px";
+			targetX=-( parseInt(this.id) *400);
 		});
 	}
 }
 
+//7개의 이미지들 및 그 이미지들을 감싸앉게될 div 도 생성하자!!!
+function createImgBox(){
+	//div 생성 
+	box=document.createElement("div");
+	box.style.border="1px solid red";
+	box.style.position="relative";
+	box.style.left=0+"px";
+
+	//위에 생성된 box에 이미지들을 생성하여 붙이자!!
+	for(var i=1;i<=7;i++){
+		var img=document.createElement("img");
+		img.src="./images/p"+i+".jpg";
+		img.style.width=400+"px";
+		img.style.height=300+"px";
+		img.style.position="absolute";/* box 를 기준으로 한 위치*/
+		img.style.left=((i-1)*400)+"px";
+		box.appendChild(img);//박스에 이미지를 자식요소로 부착!!
+	}	
+	//content div에 box를 자식요소로 부착!!
+	content.appendChild(box);
+}
+
+//게임 루프 ( 뭐든지 에니메이션을 구현하려면 지속적인 루프가 있어야 된다)
+function gameLoop(){
+	move();
+	setTimeout("gameLoop()",10);
+}
+//루프에 참여할 대상은 box 이므로(=움직일 대상이  box)
+//박스의 위치값에 대한 움직임 처리...
+function move(){
+	box.style.left=parseFloat(box.style.left)+a*(targetX - parseFloat(box.style.left))+"px";
+	console.log(box.style.left);
+}
+
 addEventListener("load", function(){
 	init();
+	gameLoop();
 });
 </script>
 </head>
