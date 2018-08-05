@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>부드러운 겔러리</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.wrapper{
+	width:400px;
+	height:350px;
+	background:yellow;
+	margin:auto;
+}
+#content{
+	width:inherit;/*부모의 크기와 동일하게..*/
+	height:300px;/*이미지 높이와 동일하게..*/
+	background:pink;
+}
+#footer{
+	width:inherit;
+	height:50px;
+	background:dodgerblue;
+	text-align:center;
+}
+#footer > span{
+	font-size:25px;
+	margin:0px 2px;
+	color:yellow;
+}
+</style>
+<script>
+var content;
+var footer;
+//프로그램 가동과 동시에 초기화 작업 용도 정의...
+function init(){
+	content=document.getElementById("content");
+	footer=document.getElementById("footer");
+	createDot();
+}
+//이미지를 선택하게 해주는 도트들..
+function createDot(){
+	for(var i=1;i<=7;i++){
+		var span=document.createElement("span");
+		span.innerText="●";
+		footer.appendChild(span);//자식 요소로 부착!!!
+
+		span.addEventListener("click", function(){
+			//현재 클릭한 span의 배경색을 바꿔보자!!
+			//this.style.color="green";
+		});
+	}
+}
+
+addEventListener("load", function(){
+	init();
+});
+</script>
+</head>
+<body>
+
+	<div class="wrapper">
+		<div id="content">
+			<!-- 안쪽은 프로그램으로 처리하겠다... -->	
+		</div>		
+		<div id="footer">
+			<!-- 안쪽은 프로그램으로 처리하겠다... -->	
+		</div>
+	</div>
+
+</body>
+</html>
